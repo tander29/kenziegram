@@ -12,12 +12,13 @@ const uploadedPictures = []
 app.use(express.static(publicPath));
 
 app.post('/public/upload', upload.single('myPhoto'), (request, response, next) => {
-    // console.log(`Uploaded ${request.file.filename}`)
-    // uploadedPictures.push(request.file.filename)
+    console.log(`Uploaded ${request.file.filename}`)
+    uploadedPictures.push(request.file.filename)
 
     fs.readdir(uploadPath, (err, items) => {
         // console.log(items);
-        response.send(`<h1>Successful upload</h1>`)
+        response.send(`<h1>Successful upload</h1>
+       <a href= http://localhost:3000/>Back to main Page</a>`)
     })
 
 })
@@ -30,8 +31,9 @@ app.get("/", (req, res) => {
         items.forEach(item => photoArray.push(`<img src=http://localhost:3000/uploads/${item}>`))
         console.log(photoArray)
         res.send(
-            `<body>
-            <h1>Welcome to Kenzie Gram! This page is for uploads, go to the main page to upload a photo</h1>
+            ` <link rel="stylesheet" href="stylesheet.css" type="text/css">
+            <body>
+            <h1>Welcome to Kenzie Gram!</h1>
 
             <form action="/public/upload" enctype="multipart/form-data" method="POST">
             <fieldset>
