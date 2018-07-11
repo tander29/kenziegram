@@ -18,7 +18,10 @@ app.post('/public/upload', upload.single('myPhoto'), (request, response, next) =
     fs.readdir(uploadPath, (err, items) => {
         // console.log(items);
         response.send(`<h1>Successful upload</h1>
-       <a href= http://localhost:3000/>Back to main Page</a>`)
+       <a href= http://localhost:3000/>Back to main Page</a>
+       <img src=http://localhost:3000/uploads/${request.file.filename}>
+       
+       `)
     })
 
 })
